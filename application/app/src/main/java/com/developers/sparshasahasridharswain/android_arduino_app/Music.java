@@ -14,17 +14,17 @@ public class Music {         //ID=1
     {
         String result_string="";
         if(id<=4 && id>=0)
-            result_string="1 "+id;
+            result_string="1"+id;
         return result_string;
     }
 
-    public Music convert_from_string(String k)
+    public static Music convert_from_string(String k)
     {
         Music temp=new Music();
         int n=0;
         if(k.charAt(0)=='1')
         {
-            n=Integer.parseInt(k.charAt(2)+"");
+            n=Integer.parseInt(k.charAt(1)+"");
         }
 
        switch(n)
