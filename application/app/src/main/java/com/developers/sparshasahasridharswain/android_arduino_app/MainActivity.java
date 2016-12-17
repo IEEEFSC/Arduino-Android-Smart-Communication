@@ -90,6 +90,7 @@ public class MainActivity extends AppCompatActivity {
             c.sendBroadcast(i);
         } else if (m.previous) {
             Intent i = new Intent("com.android.music.musicservicecommand");
+            Toast.makeText(c, "Prev", Toast.LENGTH_SHORT).show();
 
             i.putExtra("command", "previous");
             c.sendBroadcast(i);
@@ -98,7 +99,6 @@ public class MainActivity extends AppCompatActivity {
 
             i.putExtra("command", "play");
             c.sendBroadcast(i);
-            Toast.makeText(c, "done", Toast.LENGTH_SHORT).show();
         } else if (m.pause) {
             Intent i = new Intent("com.android.music.musicservicecommand");
 
@@ -131,27 +131,29 @@ public class MainActivity extends AppCompatActivity {
             res="";
             Receive_commands r=new Receive_commands();
             r.execute();
-            //Toast.makeText(con, "1111", Toast.LENGTH_SHORT).show();
+
         }
         else if(f.equals("~"))
         {
-            Toast.makeText(con,res, Toast.LENGTH_SHORT).show();
             if(res.charAt(0)=='1')
             {
                 Music m=new Music();
                 m=Music.convert_from_string(res);
                 music_controls(m);
+                Receive_commands r=new Receive_commands();
+                r.execute();
             }
-            Receive_commands r=new Receive_commands();
-            r.execute();
+            else if(res.charAt(0)=='9')
+            {
+                //Terminate Async task to avoid weird errors
+            }
 
-            //Toast.makeText(con, "two", Toast.LENGTH_SHORT).show();
+
         }
         else
         {
             res=res+f;
             Receive_commands r=new Receive_commands();
-            //Toast.makeText(con, "three", Toast.LENGTH_SHORT).show();
             r.execute();
         }
 
