@@ -15,7 +15,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import java.util.Set;
 import java.util.UUID;
@@ -90,7 +89,6 @@ public class MainActivity extends AppCompatActivity {
             c.sendBroadcast(i);
         } else if (m.previous) {
             Intent i = new Intent("com.android.music.musicservicecommand");
-            Toast.makeText(c, "Prev", Toast.LENGTH_SHORT).show();
 
             i.putExtra("command", "previous");
             c.sendBroadcast(i);
